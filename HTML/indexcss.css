@@ -16,8 +16,14 @@ header{
     align-items: center;
 }
 
+
+#inicio{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
 .proposito{
-    display: flex;
     justify-content: center;
     border: 2px solid black;
     padding: 15px;
@@ -41,7 +47,10 @@ nav{
     gap: 15px;
 }
 
-button{
+#btn-navbar,
+#btn-sobre,
+#btn-ajuda,
+#btn-entrar{
     background: transparent;
     color: white;
     border: 1px solid white;
@@ -51,7 +60,26 @@ button{
     transition: 0.3s;
 }
 
+.btn-catalog{
+    background: black;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
 button:hover{
     background: white;
     color: black;
 }
+
+#title{
+    text-align: center;
+    padding-top: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3rem;
+}
+
