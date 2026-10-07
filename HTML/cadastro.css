@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+/* Cabeçalho */
+
+header {
+    background-color: black;
+    color: white;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+
+    border: 1px solid white;
+    padding: 8px 15px;
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+header a:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Área principal */
+
+main {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa de cadastro */
+
+.cadastro-container {
+    width: 380px;
+
+    border: 2px solid black;
+    border-radius: 8px;
+
+    padding: 30px;
+}
+
+.cadastro-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+
+    font-size: 2rem;
+}
+
+/* Formulário */
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px;
+    margin-bottom: 15px;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    background-color: black;
+    color: white;
+
+    border: 1px solid black;
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Link para login */
+
+.cadastro-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cadastro-container p a {
+    color: black;
+    font-weight: bold;
+}
