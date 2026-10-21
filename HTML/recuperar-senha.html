@@ -1,0 +1,66 @@
+
+<?php>
+require_once "conexao.php";
+
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    header("Location: recuperar-senha.html");
+    exit;
+}
+
+$email = trim($_POST["email"] ?? "");
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    exit("Informe um e-mail válido.");
+}
+
+$sql = "SELECT id FROM usuarios WHERE email = ?";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+
+$resultado = $stmt->get_result();
+$usuario = $resultado->fetch_assoc();
+$stmt->close();
+
+if ($usuario) {
+    $token = bin2hex(random_bytes(32));
+    $tokenHash = hash("sha256", $token);
+    $usuarioId = (int) $usuario["id"];
+    $expiraEm = date("Y-m-d H:i:s", time() + 3600);
+
+    $del = $conexao->prepare(
+        "DELETE FROM recuperacao_senhas WHERE usuario_id = ?"
+    );
+    $del->bind_param("i", $usuarioId);
+    $del->execute();
+    $del->close();
+
+    $sql = "INSERT INTO recuperacao_senhas
+            (usuario_id, token_hash, expira_em)
+            VALUES (?, ?, ?)";
+
+    $ins = $conexao->prepare($sql);
+    $ins->bind_param("iss", $usuarioId, $tokenHash, $expiraEm);
+
+    if ($ins->execute()) {
+        $link = "http://localhost/MGStore/redefinir-senha.php?token="
+              . urlencode($token);
+
+        $assunto = "Recuperacao de senha - MG Store";
+        $mensagem = "Acesse este link para redefinir sua senha:\n\n"
+                  . $link
+                  . "\n\nO link expira em 1 hora.";
+
+        $cabecalhos = "From: MG Store <nao-responda@seudominio.com>\r\n";
+
+        // O envio depende da configuração de e-mail do servidor.
+        mail($email, $assunto, $mensagem, $cabecalhos);
+    }
+
+    $ins->close();
+}
+
+$conexao->close();
+?>
+
+

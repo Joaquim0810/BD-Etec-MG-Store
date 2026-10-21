@@ -1,0 +1,109 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background: white;
+}
+
+header {
+    background: black;
+    color: white;
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: white;
+    color: black;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.conteudo {
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.conteudo h2 {
+    margin-bottom: 18px;
+    margin-top: 25px;
+}
+
+.conteudo h2:first-child {
+    margin-top: 0;
+}
+
+.conteudo p {
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.botao {
+    display: inline-block;
+    background: black;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background: white;
+    color: black;
+}
+
+details {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 12px;
+    padding: 15px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details p {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
